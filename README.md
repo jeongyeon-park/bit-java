@@ -1,16 +1,17 @@
-# bit-java
-Day 5 note
-//변수의 값 비교
-switch (변수){
-	 case 변수1:
-		break;
-	case 변수2:
-		break;
-	case 변수3:
-		break;
-	default:
-		해당 내용이 없을 때
-	break;
+
+### Day 5 note
+
+변수의 값 비교
+>switch (변수){
+	     case 변수1:
+		    break;
+	     case 변수2:
+		    break;
+	     case 변수3:
+		    break;
+	     default:
+		  //해당 내용이 없을 때
+	     break;
 }
 
 자바는 case에 char,String도 올 수 있음.
