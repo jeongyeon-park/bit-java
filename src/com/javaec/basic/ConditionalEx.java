@@ -16,7 +16,21 @@ public class ConditionalEx {
 //		doWhileEx();
 //		forEx();
 //		continueEx();
-		breakEx();
+//		breakEx();
+		randomEx();
+	}
+	public static void randomEx() {
+		//복수번의 랜덤(1~6)을 뽑아서 합산
+		int rollCnt = 6; // 횟수
+		int total = 0; //합산 변수
+		
+		for(int i = 0; i<rollCnt; i++) {
+			//랜덤으로 주사위 값을 추출
+			int num = (int)(Math.random()*6)+1; //0.0이상 1.0미만
+			System.out.println(i + "번째 주사위:"+num);
+			total += num;
+		}
+		System.out.println("주사위 총합:"+total);
 	}
 	public static void breakEx() {
 		//1부터 loop를 돌려서 6과 14로 모두 나누어 떨어지는 수는 얼마인가?
