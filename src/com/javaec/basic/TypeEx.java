@@ -108,6 +108,7 @@ public class TypeEx {
 		System.out.println(bin);
 		System.out.println(oct);
 		System.out.println(hex);
+		//
 		
 	}
 
