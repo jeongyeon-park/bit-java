@@ -169,7 +169,7 @@ system.arraycopy()로 배열을 복사 할 수도 있다.
 system.arraycopy(원본배열, 시작인덱스, 복사할길이);
 
 
-###Day 7 Note
+### Day 7 Note
 
 객체지향 프로그래밍 
 절차지향 프로그램 안에 기능이 다 녹아있음 
