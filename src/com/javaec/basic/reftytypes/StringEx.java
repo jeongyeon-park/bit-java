@@ -41,7 +41,7 @@ public class StringEx {
 		 System.out.println(str2 == str3);
 		 
 		 //값의 비교 . 동일 
-		 //객체 내부에 equals라고 하는 베서드 이용
+		 //객체 내부에 equals라고 하는 메서드 이용
 		 System.out.println(str.equals(str2));
 		 System.out.println(str.equals(str3)); // 적는 순서는 상관 없음 
 		 
