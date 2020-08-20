@@ -17,7 +17,7 @@ public class ArrayEx {
 		System.arraycopy(scores,//원본배열
 				0,//원본배열의 복사 시작 인덱스
 				target,//대상배열
-				7,//대상 배열 내 복사 시작 인덱스
+				1,//대상 배열 내 복사 시작 인덱스
 				scores.length);// 복사 할 내용의 길이
 		//loop 돌리면서 내용을 확인
 		//enhanced for
@@ -26,7 +26,12 @@ public class ArrayEx {
 		}
 		System.out.println();
 	}
-		
+	/*		for(int value:target){
+	 * 			system.out.print(value+" ");
+	 *		} 	
+	 *		
+	 *		System.arraycopy(scores,0,target,0,score.length)//원본배열/대상배열/복사시작인덱스/원복 복사 길이
+	 */
 	public static void arrayCopy() {
 		//배열은 크기변경이 불가, 추가 내용이 있을 경우 새 배열 생성 후 복사. 
 		int scores[]= {90,80,70};

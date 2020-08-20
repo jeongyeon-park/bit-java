@@ -42,7 +42,7 @@ public class EnumEx {
 		//열거형 객체 확인.
 		System.out.printf("오늘은 %s(%d)요일 입니다%n",
 				dow.name(), // 열거 상수 문자열 반환
-				dow.ordinal()  //열거 상수의 순번
+				dow.ordinal()  //열거 상수의 순번  변환
 				);
 		
 		// 문자열을 -> 열거상수로
