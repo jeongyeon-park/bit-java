@@ -25,7 +25,7 @@ public class DateEx {
 		df = DateFormat.getDateInstance(DateFormat.LONG);
 		System.out.println("LONG 포맷"+df.format(now));
 		
-		//TODO: 미디엄, 쇼트 포맷ㄳ으로 현재날짜 출력해봐라
+		//TODO: 미디엄, 쇼트 포맷으로 현재날짜 출력해봐라
 		
 		//자유로운 날짜 데이터 포매팅
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 mm월 dd일 hh시 mm분 ss초");
