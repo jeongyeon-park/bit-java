@@ -657,3 +657,138 @@ compareto에서 하나씩 빼서 비교, 다시 넣음.
 검색. 자료를 반으로 나눈다. 거기에 검색어를 대입. 
 binary search? -> 기본적으로 데이터 중간을 찾아감. 그래서 바이너리 서치의 전제는.
 내부 데이터가 미리 정렬되어잇어ㅑㅇ한다. 
+
+
+### Day 12 Note
+
+https://github.com/InventoryBox/InventoryBox_Android
+
+좋아보임.. 이런식으로 프로젝트 하고싶음 참조하자
+
+-Wrapper Class
+
+
+primitive 타입(기본자료형. 더이상 쪼갤 수 없는 단순데이터)
+: 비어있을 수 없음(null허용하지않음)
+
+
+reference(객체)
+:수치데이터임에도 null을 허용해야할 때가 있음. 
+그래서 생긴게 Wrapper클래스: 기본 데이터형을 객체로 다루기위한 포장클래스
+정수형 Wrapper, 실수형 Wrapper클래스 모두 부모로 Number부모클래스 가짐.
+
+자바는 객체대상으로 처리를 많이해서 Wrapper가 존재함.
+특정클래스는 객체만을 다뤄서 기본 데이터형 사용할수없음.
+문자열을 기본타입으로 변환할때 (Static method -> new사용안하고도 사용할 수 있는 메소드)
+utility method제공
+
+Integer 
+데이터
+메소드 
+
+deprecated ? : 기존버전에서 다른 방법으로 변경 되었는데 잠시놔두는..
+
+타입간 변환 정수->실수, 문자열 -> 정수 (utility method)
+문자열을 기본 데이터 값으로 변환 또는 그 반대
+
+Integer.parseInt("-123") ; 문자열을 int로
+
+ten,intValue(); ->언박싱
+
+자동박싱, 자동 언박싱 
+
+자바는 객체 주로 다루기 때문에 기본타입이 아닌 참조타입으로 요구하는 때가 많음.
+객체 다루다보면 null이 있어야 할 경우가 있음.(기본타입 받지않는 상황0
+그래서 wrapper사용함. 
+
+
+
+
+-Utility class : Data, Dalendar : 편리한 기능을 모아놓음
+
+-Generics -> 데이터 처리에 중요한 요소 ->나아가서 Collection
+
+
+Collection Framework :중요~~
+
+Date 날짜 시간.. 메서드들 많았는데
+현재 생성자만 주로 사용. 날짜에 관련된 기능들은 calendar 클래스 허용.
+
+
+Data Format
+oooo년 oo월 oo일
+언어마다 포맷이 다 다름.  해당 언어에맞는 포멧문자 확인하기 
+yyyy-mm-dd HH:
+
+import java.util.Date; Data사용 전 import해줘야함. 
+
+
+Calender 클래스 
+날짜와 시간정보 표현. 단 한개의 캘린더를 유지. 여러 객체 생성 X
+Singleton 
+getInstance()호출하면 캘린더 객체 얻을 수 이ㅣㅆ음. 
+
+날짜 관련 연산 기능.
+
+get(Calender.YEAR) 상수 부여 해주면 값 받을 수 있음.
+set(Calender.MONTH,10) 월을 10으로 셋팅. 
+Add(Calender.MONTH, 10 ) 현재 얻어온 날짜로 부터 10월 더해라. 
+
+
+-Generic
+클래스 내부에서 사용할 데이터 타입을 나중에 사용할 때 확정. 
+다운캐스팅은 위험할 수 있음. 
+인스턴스 생성할 때 바깥에서 데이터 타입 넘겨주는.. 클래스 안쪽 
+private T[] pArray 
+
+타입을 파라미터로 가지는 클래스와 인터페이스 <T>
+ class 안에 들어가서 instance됨., 설계시에는 어떤 데이터 타입인지 결정하지않고 객체 생성시 결정
+class GenericBox<T> E,R.... <>안이 하나일 필요 없음,
+T content;
+public T getContent(){
+	return content;
+}
+
+Box<Integer> intBox = new Box<Integer>..
+
+컬렉션: 다수의 데이터, 데이터 그룹을 의미
+프래임워크: 라이브러리 코드의 집합. 절차를 만들어서 뼈대를 만들어뒀다.
+컬렉션 프래임워크 : 컬렉션 저장 클래스를 표준화 
+->순차형
+->해쉬..집합 ㄱ-
+Vector,ArrayList.. 
+
+List 순서가 잇는 데이터의 집합 . O O O O O . 길이가 있음. index가 있음
+Set 집합. 안쪽 데이터가 있다. 순서는 중요하지않음. 
+Map 인덱스이용한 접근 X. Key. Value의 쌍이다.
+Key와 Value의 쌍. 
+순서는 유지 X. Key의 중복이 없다. 우편번호..지역번호 등 
+
+배열          V s           리스트
+                        느린접근. 배열처럼 자료들을 붙여서 담을 수 없음. 
+                        참조자료 유형만 사용가능.(참조자료이니까 공간 어떻게 할지 모름.)
+                        필요할 때 필요한 만큼 할당 
+
+                        가변적 크기 
+
+
+Vector() 안쪽에 어떤 데이터 담을 수 잇는 버퍼르 ㄹ만들어둔다. 
+remove(객체) remove(인덱스)
+size(크기) capacity(용량 : 버퍼의 크기 알 수 잇음.)
+
+컬렉션 프래임워크는 primitive 타입 넣을 수 없음. collection 만.
+vector의 결과는 항상 object 적절한 type으로 변환 후 사용. 
+generics로 지정하징낳으면 여러타입ㅇ러 지정가능. 
+
+size:0 , capacity: 10 
+객체 갯수     버퍼 사이즈.
+미리 버퍼 만들어놓는 ㅣ융? 메모리 할당, 해제작업이 CPU라던가 메모리를 많이 소요하는 작업.. 때문에 미리 
+
+없는 객체의 인덱스 검색은 -1을 반환한다.
+
+객체 삭제 
+
+short integer long gloatr double 
+
+첨에 부르면 enumeration이 맨 앞에.. 순서대로 데이터 뽑아낼 수 잇따. 
+뒤에 몇개 더 남았는지 알수 없기때문에 while불러줘서.. 
