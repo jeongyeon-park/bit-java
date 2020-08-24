@@ -799,3 +799,64 @@ short integer long gloatr double
 
 첨에 부르면 enumeration이 맨 앞에.. 순서대로 데이터 뽑아낼 수 잇따. 
 뒤에 몇개 더 남았는지 알수 없기때문에 while불러줘서.. 
+
+### Day 13 Note
+
+-Collection Framework
+
+List(배열) 
+
+Set(집합. 데이터 중복 허용 X)
+
+Map(딕셔너리, 순서 중요 X, key의 중복 허용 X. 
+집합 자료형. 키값,value값., )사전 찾을 때 index로 찾는 것처럼.. 
+
+배열: 고정된 크기, 비효율적 메모리 점유 
+List는 유동적, 가변적인 크기 , 참조자료 유형만 사용가능. 
+primative 타입 쓰고 싶으면 Wrapper로 써줘야한다.
+
+Linked List 
+Linked List 생성하면 head 만 생김. 
+List 인터페이스 (설계도)
+index 통한 참조접근 불가. head로 부터 링크 따라가면서 접근 . 
+인덱스 접근 할 수 있는 메서드가 있기는 함. 
+객체 생성 , 링크 끊음. 다시 연결 
+삽입, 삭제 (메모리 효율적으로 움직임)
+
+List 
+Vector LinkedList ArrayList모두 추상클래스 AbstractList상속받은 동적
+자구. 
+
+add(어디에,뭐를) set() get() remove() List 설계도 
+
+ArrayList 배열과 비슷 중간 객체 삭제되면 뒤의 객체 당겨서
+인덱스 재구성. LinkedList에 비해 효율 떨어짐. 
+
+List l = new LinkedList()
+
+
+Stack 
+push(0
+pop
+peek
+empty -> 안쪽에 데이터 있는지 비었는지 확인  
+
+
+13일차 List, Stack 자료형 
+
+
+Hash set 
+hash알고리즘. 해시코드란 객체를 식별할 하나의 정수값. 
+"car"->HASH -> 정수  //이걸로 찾음
+
+     student class    -> new student  -> new student 
+     name                박정연          박정연
+     id                  1               1
+hashcode가 메모리 주소 반환. 같은 이름가진 같은 학번임에도 hash set에 들어감.
+이게 문제임/ 
+
+동일한 객체를 동일한지 아닌지 어떻게 비교할 것인가?
+
+1. object가 가진 hashcode비교. 
+2. equals() 내부 값이 동일한지 비교. 
+3. 그렇다면 두 객체는 동등 객체임. 
