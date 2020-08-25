@@ -1,12 +1,14 @@
 package com.javaec.io.charstream;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Writer;
 
-import com.javaec.io.bytestream.FileReader;
-import com.javaec.io.bytestream.Reader;
+
 
 public class CharStreamEx {
 	static String rootPath = System.getProperty("user.dir")+
