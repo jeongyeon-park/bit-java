@@ -862,3 +862,101 @@ hashcode가 메모리 주소 반환. 같은 이름가진 같은 학번임에도 
 1. object가 가진 hashcode비교. 
 2. equals() 내부 값이 동일한지 비교. 
 3. 그렇다면 두 객체는 동등 객체임. 
+
+
+### Day 14 Note
+
+-Stream과 IO 
+표준 입출력 : System.in(키보드)/ System.out(모니터)
++file + network 
+IO다루기 위한 자바의 표준 API
+
+System.out - PrintStream이라는 클래스를 연결해둔거임 
+System.in - InputStream이랑 연결. 
+ 
+Stream이란 무엇인가?
+:흐름.
+한방향으로 프로그램과 IO객체를 연결.
+Stream또한 객체로 취급함. 
+스트림객체 -> 객체 생성->소스연결 ->데이터 출력 
+
+ByteStream 2진파일(이미지,사운드,프로그램)
+CharacterStream 문자,텍스트형태의 데이터 
+
+FileInputStream 
+
+read 메서드 수행하면 데이터가 순서대로 흘러들어옴. 
+
+OutputStream 
+write method 데이터를 흘려보낼 수 있게된다.
+
+input은 불러와야하니까 read계열.. 
+close() 다 사용하면 닫아줘야한다. 
+
+write할때는
+flush() -> close()해주는 것이 좋다.
+(내부버퍼비우기)//타겟의 상황 알기 위해서 
+
+inputStream 
+read() : 1바이트 읽고 4바이트 int타입으로 리턴 
+더 이상 입력 스트림으로부터 바이트 읽을 수 없다면 -1반환.
+read() = 1byte읽어서 4byte로 반환
+
+read(byte[] b) method 버퍼를 활용한 메서드
+b.length 만큼 바이트 읽고 배열에 저장 
+
+while 이 -1이 아닐 동안만 loop돌기
+
+read(byte[] b, int affset, ine len) offset만큼 건너 뛴 후 읽기
+
+다 쓰고나면 close() 
+
+write int 중 끝에있는 1byte만 전송
+
+flush()  output은 바로 출력 X. 내부의 작은 버퍼에 쌓여있다가 순서대로 나가.ㅁ
+버퍼에 남은 내용 모두 출력시키고 버퍼를 비운다. 
+그래서 flush 뒤에 close해주는게 좋음 
+
+FileStream (2진 Stream) 
+ajva.io 패키지에서 제공 
+파일정보, 파일 조작, 디렉토리 관련 
+파일 객체를 생성한것이지 파일을 생성한것은 아님 
+exists method 이미 존재하는 파일인지 체크 
+createNewFile() 새 파일 생성 / 부모 없으면 못만든다. 
+mkdirs() 경로상에 없는 모든 디렉토리를 생성 
+
+실제 복사는 버퍼를 만들어두고 블록별로 전송함.
+지금한건 안쪽의 data를 1byte씩 불러와서 저장 = 효율 안좋음.
+BufferStream 에서 해소하자. 
+
+chracter Stream 
+reader method : 입력 스트림으로부터 한개의 문자 (2byte) 4바이트 int타입으로리턴
+writer method :int를 char로 변환하면 읽은 문자 읽을 수 있음. 
+
+
+보조 스트림 
+stream and IO
+
+단독 사용 X
+데코레이터 패턴 
+객체의 추가적인 요건 동작으로 첨가 
+subclass만들어서 
+
+보조 스트림은 자체적으로 입출력수행할 수 없다. (중요)
+그래서 주 스트림이 있어야함. 
+주 스트림 (데이터 소스로부터(연결해서)데이터 읽어오기)
+filterInputStream(추가기능) read와 write override해주면 됨.
+
+BufferdInputStream 
+입출력 효율 높임. FIS -> string 얻어옴 -> BIS ->bis.close 하면 fis도 닫힘.
+
+BufferedReader 와 BufferedWriter 
+
+readLine() 줄단위로 읽어옴.
+newLine() 개행문자 전송
+
+DataInputStream 과 DataOutputStream //보조 스트림 . 기본타입 할 수 있음. 
+inpustream과 outputstream은객체(binary)만 입출력 가능. 기본타입 입출력 못함
+
+중요. dataoutputstream을 가지고 문자열 ,int,double출력했다면
+dis도 문자열, int,double순서대로 가져와야한다.  
