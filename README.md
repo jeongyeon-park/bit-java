@@ -960,3 +960,130 @@ inpustream과 outputstream은객체(binary)만 입출력 가능. 기본타입 �
 
 중요. dataoutputstream을 가지고 문자열 ,int,double출력했다면
 dis도 문자열, int,double순서대로 가져와야한다.  
+
+###Day 15 Note
+
+- Stream과 IO마무리
+
+Input stream Output Stream 
+주 스트림(IO작업 여기서) 보조스트림(IO 수행하는데 +부가기능추가/데코레이터기능)
+
+ 두가지로 나뉜다.. 
+객체가 가진 추가적인 요건을 동적으로 첨가
+기능을 유연하게 확장할 수 있는 방법 제공/ 여러가지 붙어도 됨
+
+콘솔 키보드(입력) 모니터(출력)통한 입출력을 표준 입출력.
+JVM시작되면 자동적으로 생성되는 스트림 
+System.in System.out System.err / 표준입력 표준 출력 
+
+(중요) 정상수행하면 java가 알아서 파일을 close해줌 
+Network Scanner IO Stream Database / 얘들은 알아서 됨. 
+close()해줘야 읽을 수 있다
+파일에서 입력과 출력을 동시에 할 수 있으나 Transaction관점에서 바람직하지않음
+
+StringTokenizer 
+문자열을 특정 구분자로 분리기능. 
+readLine() -> String -> 기준으로 분리 .split() 
+Text->구분자->분리
+뒤에 더 있는가 확인->다음거 넘어가게 
+hasMoreTokens->nextToken
+
+StringTokenizer 생성자
+StringTokenizer (String str) -> 기본 구분자,( 탭,개행문자)/t/n/r
+StringTokenizer (String str, 구분자)
+#- -> #or-
+
+Comma seperated Values : 컴마로 구분된 데이터 형태
+readLine() -> 컴마로 분절.
+
+Scanner는 next계열.. 로 parsing 사용 가능.
+읽을 거 없을때 exception을 throw try catch로 예외잡기.
+hasnextline()등으로 확인. 
+next() nextfloat() 으로 불ㄹ러 올 수 있ㅇ다. 
+
+bufferedreader는 readLine() null값 return 
+
+-Thread
+
+Thread란 프로그램의 실행 흐름:process내의 하나의 작업 흐름
+process : 실행중인 하나의 프로그램
+
+프로세스하나 - 스레드 하나
+처음 프로세스 생성되었을때 생기는 스레드(Main thread)
+메인 스레드 실행되고 부가적인 기능 넣고싶으면 main thread가 다른 스레드 생성.
+특별한 지시 없이는 수행끝날때까지 별도의 작업을 수행
+멀티 스레드-힘든작업. 어렵기도 함.
+
+thread의 상태를 봐야함. 
+thread생성되어서 메모리에 올라옴 : NEW
+New+start() : RUNABLE
+runable + run():RUNNING
+
+MultiThread 프로그램 작성 방법
+Thread클래스 상속, 로직작성
+Runnable 인터페이스 이용. runnable interpace 구현해서 -> implements 로직작성->thread에 전달
+
+Thread run(Runnable)
+
+Thread
+  run             <- Runnable Logic
+Thread클래스->복잡한 thread구현가능
+start메소드 : 1.스레드 생성, 2.run 호출.
+내가 run 호출하면 안됨. 
+
+Runnable interface이용 -> Thread Logic 간단.
+thread logic만 가지고있어야함. class implements Runnable 내부 설계도 메소드
+오버라이드.(implement)니까. 여기는 run 만 정의되어ㅣㅇㅆ음. 
+ 
+Thread상속코드                   ->멀티스레드
+Runnable 구현코드 
+
+경우에 따라서 시스템의 자원이 부족하다면, 
+스레드의 우선순위를 ㄹ잡아줄 수 있다. setpriarrety (1~10) 까지 잡아줄 수 있음. 
+일반:5
+
+JavaThread 
+메모리영역 공유시켜줄 수 있음
+메모리 공유객체를 다루고자할때 데이터를 변경시키는 영역은(임계영역) /함부로 바뀌면 안되는
+해당 객체를 Lock해야 다른 사람이 변경 X. 
+
+Network and Thread
+TCP Socket: 인터넷의 기반이되는 프로토콜
+IP:주소(엔드포인트,위치)
+TCP:데이터 전송위한 프로토콜
+식별주소 판단. IP/위치지정
+데이터 전송 : TCP 
+
+소캣:양쪽에 소켓 연결된 상태에서 통신가능
+UDP는 연결유무 상관없이 데이터를 주고받음.빠름.게임에서 많이 사용.
+TCP연결지향. 연결되었는지 계속 확인작업이 필요함. 그래서 속도가 좀 느림.정확도는 높음. 신뢰성
+ |     |
+FTP   HTTP  (들이 TCP기반) 
+연결지향:한번 연결되면 끊어질때까지 송신데이터가 차례대로 목적지 소캣에 전달
+서버소켓 만들어뒀다가 대기를 (클라이언트 접속할때까지)
+소캣 생성역할 
+
+서버                                       /클라이언트
+여러 클라이언트의 요청 처리할 수 있어야    | 서버상에 접속,데이터 요청, 서버데이터받아서 처리
+서버소캣 하나 있어야함. 
+일단 주소 연결. 네트워크 장비의 IP주소와   | 서버소캣주소로 접속 시도. 
+연결(binding) 대기. 연결요청 받아들임.
+이러고나면 소캣객체가 나옴.    
+
+
+서버 소캣객체와 클라이언트 소캣객체가 통신하는거임. 
+EchoServer : 클라이언트가 메세지보내면 반대로 다시 돌려보내주는 서버.
+채팅.웹서버 구현가능.. 
+
+ServerSocket생성->바인드->클라이언트 소캣만들고->ip주소+포트(연결요청)
+->accept() ->포트가 할당. 소캣끼리 통신. 
+소캣에서 inputstream과 outputstream을 뽑아낼 수 있다. 
+
+INET addr 에 대하여..
+
+cmd ipconfig : 내 local 주소 
+
+www -> 여러개의 서버를 동시에 돌리고있음. (로드발란싱) 유효자원으로 연결. 
+하나의 호스트이름이 반드시 한개의 아이피에 연결되어있다고는 할 수 없음.
+ 
+
