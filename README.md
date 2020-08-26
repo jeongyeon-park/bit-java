@@ -961,7 +961,7 @@ inpustream과 outputstream은객체(binary)만 입출력 가능. 기본타입 �
 중요. dataoutputstream을 가지고 문자열 ,int,double출력했다면
 dis도 문자열, int,double순서대로 가져와야한다.  
 
-###Day 15 Note
+### Day 15 Note
 
 - Stream과 IO마무리
 
