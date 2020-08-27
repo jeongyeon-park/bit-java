@@ -14,7 +14,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-
+//16일차 
 	public static void main(String[] args) {
 		// 1. 서버 소캣 생성 (IO나 Network는 예외처리를 잘 해줘야함)
 		ServerSocket serverSocket = null;

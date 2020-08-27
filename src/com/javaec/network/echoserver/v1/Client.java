@@ -14,7 +14,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class Client {
-
+//16일차
 	public static void main(String[] args) {
 		//1. Socket 생성
 		Socket socket = null;
