@@ -1109,3 +1109,68 @@ Os 앞에다가 -Writer (덧붙여줌)- BW - 우리의 process
 
 
 -Echo Server (Socket + Thread) 만들기
+
+
+### More about git
+
+project 
+관리 위해서 LocalRerpository가 필요하다. 
+ 
+변경된 파일을 로컬 레퍼지토리에 올린다(Staging된 것임)//commit
+commit하면 log와 함께 기록이 남음. (로컬레퍼지토리에)
+
+       |
+       |
+     (push)
+       |
+
+remote Repository (원격 레퍼지토리)
+
+fetch(remote repository의 로그만 확인한다)
+pull(remote repository에서 파일을 가져오는)
+
+
+새 프로젝트 -> 로컬레퍼지토리를 생성해야 commit할 수 잇다. 
+->Team -> ShareProject -> 위치를 잡아달라고 한다. git디렉토리 안에 저장소 생성
+프로젝트 파일의 위치와 저장소가 같은 내용이 아니다. 파일을 만들어준다.
+->디렉토리 생성. .get 이 파일이 저장소 정보 관리하는 정보파일들을 담고있는 파일. 
+(보기->숨김파일 표시 하면 보임)이러면 연결된거임. 
+->Team -> commit -> unstaged .아직 git저장소에 저장될 준비 안된거.
+-> unstage를 옮기면 staging단계. 여기서 commit하면 로컬레퍼지토리로. 
+(커밋 메세지가 반드시 있어야한다. ) 기록이니까 제대로 써주기.
+->Author랑 Commiter 잘 지정해주기. 
+->Propertiy->git에서 설정할 수 있나봄 
+commit 만 하면 로컬브렌치까지 반영되는거임. 
+->git에서 레퍼지토리 생성. 그러면 저장소의 주소가 나온다. 그걸 복사해서
+우리 로컬 레퍼지토리의 remote로 등록해주어야함. 
+주소 복사 Remotename에 붙여넣기.
+서버계정 아이디 패스워드 입력해주기. 
+하나의 브랜치. master로 서버에 올려줌. 
+
+
+원격 브랜치 
+|       		 | (변경사항있는가 ? 확인 : fetch)
+A         		B  (fetch하면 변경사항이 내려옴. 변경사항 다운로드 : pull)
+text.txt              
+
+
+기본적으로 마스터라는 브랜치가 생김
+
+      B의 head.. ->o->
+master |
+  | -> o master의 head          마스터가 재배열(A나 B와 merge)            (처음에는 아무것도 없음. 여기가 Head)
+       |	         |      마스터에서 A로 : checkout                        변화가 생기면 변경기록이 남음. 
+       A의 head  ->o->o->o-> o->o->o->            commit 하고나면 head가 이동.(o로) 또 커밋하면 헤드 이동. 
+
+만약 공동작업을 한다면? : 같은 파일을 고친다거나.. 충돌이 일어날 수 있음.
+그래서 브랜치를 만든다. 브랜치는 새로운 작업의 흐름을 만드는 거임.
+
+
+master는 쭉 가도록 내버려두고
+개발 브랜치 따주고 거기에서 작업자 브랜치를 또 따주기
+master로 직접 머지는 권장하지않음. 특정 규칙에 따라서 계속 merge 
+출시일 되면 master로 땡겨줌. test브랜치라던가 몇개정도는 관리해주는게 좋음
+master는 함부로 건드리지 않는게 좋음. 
+gitflow 를 찾아보렴 제품이기도 하면서 컨셉임. 
+브랜치의 운영전략 개발자 별로 브랜치 따기  dev따서 거기에 합치기..
+
